@@ -35,7 +35,8 @@ export default {
   },
   data () {
     return {
-      colours: ["#88d18a","#a2c575","#b7b968","#c7ac64","#d19f67","#d69370","#d6897b","#cf8287"],
+      colours: ["#003f5c","#2f4b7c","#665191","#a05195","#d45087","#f95d6a","#ff7c43","#ffa600"],
+
       people: [],
       year_labels: []
     }
