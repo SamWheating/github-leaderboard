@@ -1,10 +1,10 @@
 <script>
-  //Importing Bar class from the vue-chartjs wrapper
-  import { Bar, mixins } from 'vue-chartjs'
+  //Importing Line class from the vue-chartjs wrapper
+  import { Line, mixins } from 'vue-chartjs'
   const { reactiveProp } = mixins
   //Exporting this so it can be used in other components
   export default {
-    extends: Bar,
+    extends: Line,
     mixins: [reactiveProp],
     data () {
       return {
