@@ -1,7 +1,7 @@
 <template>
   <div class="adder">
-    <p>Add people:</p>
-    <input type="text" v-model=name v-on:keyup.enter=add>
+    <p>Add people: ({{this.count}}/8)</p>
+    <input type="text" v-model=name v-on:keyup.enter=add :disabled="disabled">
     <button v-on:click=add>+</button>
   </div>
 </template>
@@ -19,7 +19,17 @@ export default {
       this.$emit("add", this.name)
       this.name = ""
     }
-  }
+  },
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    count: {
+        type: Number,
+        default: 0
+    }
+  },
 }
 </script>
 

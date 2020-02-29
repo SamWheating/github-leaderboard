@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1>Github Leaderboard</h1>
-    <Adder @add="onAddPerson"/>
+    <Adder :disabled="people.length >= 4" :count="people.length" @add="onAddPerson"/>
       <div v-for="person in people" :key=person.username>
         <Person :name=person.username @remove="onRemovePerson"/>
       </div>
@@ -35,8 +35,7 @@ export default {
   },
   data () {
     return {
-      colours: ["#003f5c","#2f4b7c","#665191","#a05195","#d45087","#f95d6a","#ff7c43","#ffa600"],
-
+      colours: ["#003f5c","#ffa600","#a05195","#2f4b7c","#665191","#d45087","#f95d6a","#ff7c43"],
       people: [],
       year_labels: []
     }
