@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <h1>Github Leaderboard</h1>
-    <Adder :disabled="people.length >= 4" :count="people.length" @add="onAddPerson"/>
-      <div v-for="person in people" :key=person.username>
-        <Person :name=person.username @remove="onRemovePerson"/>
+    <Adder :max_people="max_people" :disabled="people.length >= max_people" :count="people.length" @add="onAddPerson"/>
+      <div class="flexbox-container">
+        <div v-for="person in people" :key=person.username>
+          <Person :name=person.username @remove="onRemovePerson" color="#000fff"/>
+        </div>
       </div>
       <div v-if="people.length !== 0">
         <h1>Contributions Today:</h1>
@@ -36,6 +38,7 @@ export default {
   data () {
     return {
       colours: ["#003f5c","#ffa600","#a05195","#2f4b7c","#665191","#d45087","#f95d6a","#ff7c43"],
+      max_people: 4,
       people: [],
       year_labels: []
     }
@@ -139,6 +142,12 @@ export default {
         datasets: datasets
       }
     }
+  },
+  mounted() {
+    var names = this.$route.query.names.split(",")
+    for (var i in names){
+      this.onAddPerson(names[i])
+    }
   }
 }
 </script>
@@ -157,6 +166,15 @@ export default {
   width: 70vw;
   margin-top: 5vh;
   margin: auto;
+}
+
+.flexbox-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 40%;
+    margin: auto;
 }
 
 </style>

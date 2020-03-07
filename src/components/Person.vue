@@ -9,7 +9,8 @@
 export default {
   name: 'Person',
   props: {
-    name: String
+    name: String,
+    color: String
   },
   methods: {
     remove () {
@@ -21,6 +22,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.person {
+    background-color: #555AAA;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+button {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
 h3 {
   margin: 40px 0 0;
 }

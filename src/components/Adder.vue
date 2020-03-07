@@ -1,8 +1,8 @@
 <template>
   <div class="adder">
-    <p>Add people: ({{this.count}}/8)</p>
+    <p>Add people: ({{this.count}}/{{this.max_people}})</p>
     <input type="text" v-model=name v-on:keyup.enter=add :disabled="disabled">
-    <button v-on:click=add>+</button>
+    <button :disabled="name.length < 1" v-on:click=add>+</button>
   </div>
 </template>
 
@@ -28,13 +28,18 @@ export default {
     count: {
         type: Number,
         default: 0
-    }
+    },
+    max_people: {
+        type: Number,
+        default: 8
+    },
   },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 h3 {
   margin: 40px 0 0;
 }
