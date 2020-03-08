@@ -1,8 +1,11 @@
 <template>
-  <div class="person">
+  <div>
+    <v-chip close=true v-on:click:close=remove :color=color >{{name}}</v-chip>
+  </div>
+<!--   <div class="person">
     <a :href="'https://github.com/' + name">{{name}}</a>
     <button v-on:click=remove>-</button>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -22,17 +25,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-.person {
-    background-color: #555AAA;
-    margin-left: 1vw;
-    margin-right: 1vw;
-}
-
-button {
-  margin-left: 1%;
-  margin-right: 1%;
-}
 
 h3 {
   margin: 40px 0 0;

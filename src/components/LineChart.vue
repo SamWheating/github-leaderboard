@@ -28,6 +28,9 @@
           legend: {
             display: false
           },
+          tooltip: {
+            displayColors: false
+          },
           responsive: true,
           maintainAspectRatio: false
         }

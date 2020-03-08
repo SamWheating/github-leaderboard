@@ -1,8 +1,10 @@
 <template>
-  <div class="adder">
+  <div>
     <p>Add people: ({{this.count}}/{{this.max_people}})</p>
-    <input type="text" v-model=name v-on:keyup.enter=add :disabled="disabled">
-    <button :disabled="name.length < 1" v-on:click=add>+</button>
+    <div class="adder">
+      <v-text-field placeholder="Github Username" height=2vh v-model=name v-on:keyup.enter=add :disabled="disabled"></v-text-field>
+      <v-btn :disabled="name.length < 1" v-on:click=add>+</v-btn>
+    </div>
   </div>
 </template>
 
@@ -39,6 +41,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.adder {
+  margin-bottom: 3vh;
+  width: 30vw;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 h3 {
   margin: 40px 0 0;

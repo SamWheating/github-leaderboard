@@ -2,19 +2,19 @@
   <div id="app">
     <h1>Github Leaderboard</h1>
     <Adder :max_people="max_people" :disabled="people.length >= max_people" :count="people.length" @add="onAddPerson"/>
-      <div class="flexbox-container">
-        <div v-for="person in people" :key=person.username>
-          <Person :name=person.username @remove="onRemovePerson" color="#000fff"/>
+      <div class="people-container">
+        <div v-for="(person, index) in people" :key=person.username>
+          <Person :name=person.username @remove="onRemovePerson" :color="colours[index]"/>
         </div>
       </div>
       <div v-if="people.length !== 0">
-        <h1>Contributions Today:</h1>
-        <div class="chart-container">
-          <bar-chart :chartData="daily_dataset"/>
-        </div>
-        <h1>Contributions this year:</h1>
+        <h1 class="chart-title">Contributions this year:</h1>
         <div class="chart-container">
           <line-chart :chartData="year_dataset"/>
+        </div>
+        <h1 class="chart-title">Contributions Today:</h1>
+        <div class="chart-container">
+          <bar-chart :chartData="daily_dataset"/>
         </div>
       </div>
   </div>
@@ -29,6 +29,7 @@ import LineChart from './components/LineChart.vue'
 
 export default {
   name: 'App',
+
   components: {
     Adder, 
     Person,
@@ -37,8 +38,8 @@ export default {
   },
   data () {
     return {
-      colours: ["#003f5c","#ffa600","#a05195","#2f4b7c","#665191","#d45087","#f95d6a","#ff7c43"],
-      max_people: 4,
+      colours: ['#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854','#ffd92f','#e5c494','#b3b3b3'],
+      max_people: 8,
       people: [],
       year_labels: []
     }
@@ -159,22 +160,28 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 5vh;
 }
 
 .chart-container {
   width: 70vw;
-  margin-top: 5vh;
+  margin-top: 10vh;
   margin: auto;
 }
 
-.flexbox-container {
+.chart-title {
+  margin-top: 5vh;
+}
+
+.people-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     width: 40%;
     margin: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
 }
 
 </style>
