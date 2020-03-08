@@ -52,7 +52,6 @@ export default {
       const This = this
       axios.get('https://github-contributions-api.now.sh/v1/' + username)
       .then( function (response) {
-        console.log(response)
         for (var i in This.people) {
           if (This.people[i].username == username) {
               This.people[i].score = response.data.contributions.find(o => o.date === today_date).count;
