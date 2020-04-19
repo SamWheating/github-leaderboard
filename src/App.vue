@@ -154,9 +154,12 @@ export default {
     }
   },
   mounted() {
-    var names = this.$route.query.names.split(",")
-    for (var i in names){
-      this.onAddPerson(names[i])
+    // populate the data if passed in from URL
+    if (this.$route.query.names) {
+      var names = this.$route.query.names.split(",")
+      for (var i in names){
+        this.onAddPerson(names[i])
+      }
     }
   }
 }

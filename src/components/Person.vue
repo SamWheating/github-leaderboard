@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-chip close=true v-on:click:close=remove :color=color >{{name}}</v-chip>
+    <v-chip :close="true" v-on:click:close=remove :color=color >{{name}}</v-chip>
   </div>
 <!--   <div class="person">
     <a :href="'https://github.com/' + name">{{name}}</a>

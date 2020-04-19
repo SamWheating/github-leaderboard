@@ -24,7 +24,6 @@ export default {
         return "https://leaderboard.50w.co"
       }
       var link = "https://leaderboard.50w.co/#/?names="
-      console.log(this.people)
       for (var i in this.people) {
         link = link + this.people[i].username + ","
       }
