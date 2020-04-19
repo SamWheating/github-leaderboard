@@ -50,7 +50,7 @@ export default {
       var today = new Date();
       var today_date = today.getFullYear()+'-'+("0" + (today.getMonth()+1)).substr(-2)+'-'+("0" + (today.getDate())).substr(-2);
       const This = this
-      axios.get('https://github-contributions.now.sh/api/v1/' + username)
+      axios.get('https://github-contributions-api.now.sh/v1/' + username)
       .then( function (response) {
         for (var i in This.people) {
           if (This.people[i].username == username) {
