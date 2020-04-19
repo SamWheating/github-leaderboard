@@ -8,6 +8,9 @@
         </div>
       </div>
       <div v-if="people.length !== 0">
+        <ShareButton :people="people"/>
+      </div>
+      <div v-if="people.length !== 0">
         <h1 class="chart-title">Contributions this year:</h1>
         <div class="chart-container">
           <line-chart :chartData="year_dataset"/>
@@ -26,6 +29,7 @@ import Adder from './components/Adder.vue'
 import Person from './components/Person.vue'
 import BarChart from './components/BarChart.vue'
 import LineChart from './components/LineChart.vue'
+import ShareButton from './components/ShareButton.vue'
 
 export default {
   name: 'App',
@@ -34,7 +38,8 @@ export default {
     Adder, 
     Person,
     BarChart,
-    LineChart
+    LineChart,
+    ShareButton
   },
   data () {
     return {
@@ -46,6 +51,11 @@ export default {
   },
   methods: {
     onAddPerson (username) {
+      for (var i in this.people) {
+        if(username.toLowerCase() == this.people[i].username.toLowerCase()){
+          return
+        }
+      }
       this.people.push({ username: username, score: 0, year_data:[], year_labels:[]})
       var today = new Date();
       var today_date = today.getFullYear()+'-'+("0" + (today.getMonth()+1)).substr(-2)+'-'+("0" + (today.getDate())).substr(-2);

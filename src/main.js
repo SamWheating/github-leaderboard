@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueClipboard from 'vue-clipboard2'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
 
@@ -14,6 +15,7 @@ const router = new VueRouter({
 })
 
 Vue.use(VueRouter)
+Vue.use(VueClipboard)
 
 new Vue({
   router,
